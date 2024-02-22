@@ -1,5 +1,7 @@
 package com.skypro.Homework18Testing.controller;
 
+import com.skypro.Homework18Testing.exception.DivisionByZeroException;
+import com.skypro.Homework18Testing.exception.EmptyParametersException;
 import com.skypro.Homework18Testing.service.CalculatorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,10 +30,16 @@ public class CalculatorController {
         try {
             double result = calculatorService.calculate(num1, num2, operation);
             model.addAttribute("result", "Result: " + result);
-        } catch (IllegalArgumentException e) {
-            model.addAttribute("result", "You are trying to divide by zero. It's not allowed.");
+        } catch (DivisionByZeroException e) {
+            model.addAttribute("result",
+                    "You are trying to divide by zero");
             return "calculator"; // возвращаем страницу с сообщением об ошибке
+        } catch (EmptyParametersException e) {
+            model.addAttribute("result",
+                    "One or both parameters are null");
+            return "calculator";
         }
+
         return "calculator";
     }
 }
