@@ -29,7 +29,7 @@ public class CalculatorController {
             double result = calculatorService.calculate(num1, num2, operation);
             model.addAttribute("result", "Result: " + result);
         } catch (IllegalArgumentException e) {
-            model.addAttribute("result", "You are trying to divide by zero");
+            model.addAttribute("result", "You are trying to divide by zero. It's not allowed.");
             return "calculator"; // возвращаем страницу с сообщением об ошибке
         }
         return "calculator";
