@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+</head>
+<body>
+<h2>Calculator</h2>
+
+<form action="/calculate" method="post">
+    <input type="text" name="num1" placeholder="First number">
+    <select name="operation">
+        <option value="add">+</option>
+        <option value="subtract">-</option>
+        <option value="multiply">*</option>
+        <option value="divide">/</option>
+    </select>
+    <input type="text" name="num2" placeholder="Second number">
+    <input type="submit" value="Calculate">
+</form>
+
+<div id="result">
+    {{#result}}
+        <p>{{result}}</p>
+    {{/result}}
+    {{#error}}
+        <p>{{error}}</p>
+    {{/error}}
+</div>
+
+</body>
+</html>
